@@ -6,6 +6,8 @@ email: ricardo@blockchainempresarial.com
 
 package main
 
+// Con la libreria CID se puede obtener informacion de la transaccion como por ejemplo quien la envio, su clave publica, etc
+
 import (
 	"encoding/json"
 	"fmt"
