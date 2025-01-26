@@ -7,10 +7,10 @@ import org.hyperledger.fabric.contract.annotation.Property;
 
 import com.owlike.genson.annotation.JsonProperty;
 
-@DataType()
+@DataType() // Para que lo reconozca como tipo de dato
 public final class Wallet {
 
-    @Property()
+    @Property() // Para que lo reconozca como propiedad
     private final Double tokenAmount;
 
     @Property()
