@@ -24,3 +24,12 @@ fabric-ca-client enroll -u http://admin:adminpw@localhost:9056 --csr.names "$CSR
 
 export FABRIC_CA_CLIENT_HOME=../fabric-ca/org3.acme.com/tls-int/clients/admin
 fabric-ca-client enroll -u http://admin:adminpw@localhost:9057 --csr.names "$CSR_NAMES_ORG3"
+
+# Acme
+export CSR_NAMES_ACME="C=BE,ST=Flenish Brabant,L=Louvain,O=Acme,OU=Hyperledger Fabric"
+
+export FABRIC_CA_CLIENT_HOME=../fabric-ca/acme.com/int/clients/admin
+fabric-ca-client enroll -u http://admin:adminpw@localhost:10056 --csr.names "$CSR_NAMES_ACME"
+
+export FABRIC_CA_CLIENT_HOME=../fabric-ca/acme.com/tls-int/clients/admin
+fabric-ca-client enroll -u http://admin:adminpw@localhost:10057 --csr.names "$CSR_NAMES_ACME"
