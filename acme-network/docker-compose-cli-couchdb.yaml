@@ -3,7 +3,6 @@
 # Date: 20-08-2020
 # SPDX-License-Identifier: Apache-2.0
 #
-version: '2'
 
 # ---CHANGED--- our network is called "basic"
 networks:
@@ -93,10 +92,10 @@ services:
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.acme.com-cert.pem
       - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/priv_sk
     ports:
-      - "7054:7054"
+      - "7052:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
-      - ./crypto-config/peerOrganizations/org1.acme.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - ./fabric-ca/peerOrganizations/org1.acme.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.org1.acme.com
     networks:
       - basic
@@ -131,7 +130,7 @@ services:
         - /var/run/:/host/var/run/
         # ---CHANGED--- chaincode path adjusted
         - ./../chaincode/:/opt/gopath/src/github.com/chaincode
-        - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - ./fabric-ca:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
         - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:
        # ---CHANGED--- reference to our orderer
